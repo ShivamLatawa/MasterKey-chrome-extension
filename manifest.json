@@ -5,24 +5,26 @@
     "description": "This extension will hold all your passwords",
     "version": "1.0",
 
+    "browser_action": {
+        "default_icon": "icon.png",
+        "default_popup": "popup.html"
+    },
+
     "background": {
-        "scripts": ["background.js"]
+        "scripts": ["jquery.js","background.js"]
     },
 
     "options_page": "options.html",
 
     "content_scripts": [{
-        "matches": ["http://*/*"],
-        "js": ["contentScript.js"]
+        "matches": ["http://*/*", "https://*/*"],
+        "js": ["jquery.js","contentScript.js"]
     }],
 
-    "browser_action": {
-        "default_icon": "icon.png",
-        "default_popup": "home.html"
-    },
     "permissions": [
         "activeTab",
         "tabs",
-        "*://*/*"
+        "*://*/*",
+        "storage"
     ]
 }

@@ -1,8 +1,10 @@
-$(document).ready(function() {
-  chrome.extension.sendRequest(
-    {method: "getLocalStorage", key: "name"},
-    function(response) {
-      alert(response.data);
-    }
-  );
-});
+setTimeout(function() {
+    var pswd = "";
+
+    chrome.storage.sync.get('value', function(data) {
+        console.log(data);
+        pswd = data.value;
+        document.getElementById('savedPswd').innerHTML = pswd;
+    });
+
+})
